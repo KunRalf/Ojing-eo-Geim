@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    [SerializeField] protected DynamicJoystick _joystick;
+    [SerializeField] private DynamicJoystick _joystick;
+    private PlayerController _playerController;
     private Animator _animator;
 
     private const string RUNNING_ANIMATION = "_isRun";
@@ -13,6 +14,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private void Start()
     {
+        _playerController = GetComponent<PlayerController>();
         _animator = GetComponent<Animator>();
     }
 
@@ -28,9 +30,18 @@ public class PlayerAnimator : MonoBehaviour
         }
     }
 
+    private void DeathAnimation()
+    {
+        if (!_playerController.IsAlive)
+        {
+            _animator.SetBool(DEATH_ANIMATION, true);
+        }
+    }
+
     private void Update()
     {
         RunningAnimation();
+        DeathAnimation();
     }
 
 }

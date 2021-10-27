@@ -900,6 +900,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7224764739476651360}
   - component: {fileID: 8000739210408863685}
+  - component: {fileID: 4328716720055900066}
   m_Layer: 0
   m_Name: Doll
   m_TagString: Untagged
@@ -945,6 +946,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4328716720055900066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8000739210408863706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83904e0903d4349449a77b8e42395354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8785011013179071032
 GameObject:
   m_ObjectHideFlags: 0
