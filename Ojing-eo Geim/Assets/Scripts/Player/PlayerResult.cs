@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class PlayerResult : MonoBehaviour
 {
-    public void Lose()
+    private PlayerController _playerController;
+    private GameController _gameController;
+
+    private void Start()
     {
-        Debug.Log("U LOSE");
+        _playerController = GetComponent<PlayerController>();
+        _gameController = FindObjectOfType<GameController>();
     }
+
+    private void Update()
+    {
+
+    }
+
 }

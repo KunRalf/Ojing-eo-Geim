@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 5f;
-    [SerializeField] private float _gravity = 0.5f;
+    [SerializeField] private float _gravity = 0;
     [SerializeField] protected DynamicJoystick _joystick;
     private PlayerController _playerController;
 
@@ -21,7 +21,7 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_playerController.IsAlive)
+        if (_playerController.IsAlive && !_playerController.IsWin)
         {
             _playerDirection.y = 0;
             _playerDirection.x = _joystick.Horizontal;

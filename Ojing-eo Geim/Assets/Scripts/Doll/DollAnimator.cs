@@ -6,35 +6,46 @@ public class DollAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _mainAnimator;
     [SerializeField] private Animator _headAnimator;
+    [SerializeField] private GameController _gameController;
 
     private float _delayBeforeRotateToPlayer = 5;
     private float _delayBeforeRotateToWood = 4;
 
     private bool _isRotateToPlayer = false;
-    private bool _isRotateToWood = false;
+    private bool _isRotateToWood = true;
 
     private Coroutine _toPlayer;
     private Coroutine _toWood;
 
     private const string ROTATE_TO_PLAYER = "_isRotateToPlayer";
     private const string ROTATE_TO_WOOD = "_isRotateToWood";
+    private const string HAND_UP = "_isHandUp";
 
     private void Start()
     {
-        _toPlayer = StartCoroutine(ToPlayer(_delayBeforeRotateToPlayer));
+
     }
 
     private void Update()
     {
-        RotateToPlayer();
-        RotateToWood();
+        if (_gameController.IsStartGame)
+        {
+            RotateToPlayer();
+            RotateToWood();
+            StartCoroutine(HandUpAnimation());
+        }
+    }
+
+    private IEnumerator HandUpAnimation()
+    {
+        yield return new WaitForSeconds(1f);
+        _mainAnimator.SetBool(HAND_UP, true);
     }
 
     public void RotateToPlayer()
     {
         if (_isRotateToPlayer)
         {
-            StopCoroutine(_toPlayer);
             _toWood = StartCoroutine(ToWood(_delayBeforeRotateToWood));
             _delayBeforeRotateToPlayer = 5;
             _isRotateToPlayer = false;
@@ -45,8 +56,7 @@ public class DollAnimator : MonoBehaviour
     {
         if (_isRotateToWood)
         {
-            StopCoroutine(_toWood);
-            _toPlayer = StartCoroutine(ToPlayer(_delayBeforeRotateToPlayer));
+             _toPlayer = StartCoroutine(ToPlayer(_delayBeforeRotateToPlayer));
             _isRotateToWood = false;
         }
     }

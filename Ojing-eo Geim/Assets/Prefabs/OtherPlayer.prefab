@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59cf9b53088ebfd4b91ad685bbfa1d50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 5
+  _moveSpeed: 4
   _delayBeforeRotate: 1.5
 --- !u!114 &335426595550127761
 MonoBehaviour:
@@ -406,7 +406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3700214e371caa24bb5d427559f61bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isAlive: 1
   _collider: {fileID: 1522107521164037232}
 --- !u!1 &4008325591404811298
 GameObject:

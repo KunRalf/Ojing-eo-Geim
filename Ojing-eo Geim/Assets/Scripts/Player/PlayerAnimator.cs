@@ -10,6 +10,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private const string RUNNING_ANIMATION = "_isRun";
     private const string DEATH_ANIMATION = "_isDeath";
+    private const string WIN_ANIMATION = "_isWin";
 
 
     private void Start()
@@ -38,10 +39,19 @@ public class PlayerAnimator : MonoBehaviour
         }
     }
 
+    private void WinAnimation()
+    {
+        if (_playerController.IsWin)
+        {
+            _animator.SetBool(WIN_ANIMATION, true);
+        }
+    }
+
     private void Update()
     {
         RunningAnimation();
         DeathAnimation();
+        WinAnimation();
     }
 
 }

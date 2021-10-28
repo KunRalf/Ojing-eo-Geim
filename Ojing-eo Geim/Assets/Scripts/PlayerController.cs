@@ -8,8 +8,11 @@ public class PlayerController : MonoBehaviour
     private GameController _gameController;
     private Rigidbody _rgb;
     private bool _isAlive = true;
+    private bool _isWin = false;
+    
     public bool IsMove => !_rgb.IsSleeping();
     public bool IsAlive => _isAlive;
+    public bool IsWin => _isWin;
 
     private void OnEnable()
     {
@@ -33,8 +36,10 @@ public class PlayerController : MonoBehaviour
         _gameController.RemoveFromPlayers(this);
         _collider.enabled = false;
         _rgb.useGravity = false;
-        Debug.Log("322");
     }
 
-
+    public void Winner()
+    {
+        _isWin = true;
+    }
 }
