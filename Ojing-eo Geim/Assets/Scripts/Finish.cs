@@ -27,6 +27,7 @@ public class Finish : MonoBehaviour
             if (players.gameObject.GetComponent<PlayerMove>())
             {
                 _eventService.CallOnWin();
+                Debug.Log("new branch");
             }
             
         }
