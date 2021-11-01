@@ -16,7 +16,6 @@ public class GameController : MonoBehaviour
 
     public int PlayersCount => _players.Count;
     public bool IsStartGame => _isStartGame;
-    public bool IsFreeze => _isFreeze;
     public bool IsWin => _isWin;
     public bool IsLose => _isLose;
 
