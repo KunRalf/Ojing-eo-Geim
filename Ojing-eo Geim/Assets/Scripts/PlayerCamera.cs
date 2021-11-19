@@ -17,7 +17,7 @@ public class PlayerCamera : MonoBehaviour
         _offset = _player.transform.position - transform.position;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         toPosition = _player.transform.position - _offset;
         transform.position = Vector3.Lerp(transform.position, toPosition, _lerpSpeed * Time.deltaTime);
