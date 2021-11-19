@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private EventService _eventService;
     [SerializeField] private List<PlayerController> _players;
-    [SerializeField] private AudioSource _shootAudio;
+    private AudioSource _shootAudio;
     private bool _isStartGame = false;
     private bool _isFreeze = false;
     private bool _isWin = false;
@@ -21,21 +20,22 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        EventService.Instance.OnStart += StartGame;
+        EventService.Instance.OnWin += WinScreen;
+        EventService.Instance.OnLose += LoseScreen;
         _shootAudio = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
     {
-        _eventService.OnStart += StartGame;
-        _eventService.OnWin += WinScreen;
-        _eventService.OnLose += LoseScreen;
+
     }
 
     private void OnDisable()
     {
-        _eventService.OnStart -= StartGame;
-        _eventService.OnWin -= WinScreen;
-        _eventService.OnLose -= LoseScreen;
+        EventService.Instance.OnStart -= StartGame;
+        EventService.Instance.OnWin -= WinScreen;
+        EventService.Instance.OnLose -= LoseScreen;
     }
 
     public void AddToPlayers(PlayerController player)
@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour
             {
                 _shootAudio.Play();
                 _players[i].Death();
-                _eventService.CallOnLose();
+                EventService.Instance.CallOnLose();
                 break;
             }
             if (_players[i].IsMove && _players[i].gameObject.GetComponent<OtherPlayerMove>())

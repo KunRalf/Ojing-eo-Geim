@@ -6,8 +6,6 @@ public class Finish : MonoBehaviour
 {
     [SerializeField] private GameController _gameController;
     [SerializeField] private GameObject _finishText;
-    [SerializeField] private EventService _eventService;
-
 
     private void Update()
     {
@@ -26,8 +24,7 @@ public class Finish : MonoBehaviour
             players.Winner();
             if (players.gameObject.GetComponent<PlayerMove>())
             {
-                _eventService.CallOnWin();
-                Debug.Log("new branch");
+                EventService.Instance.CallOnWin();
             }
             
         }

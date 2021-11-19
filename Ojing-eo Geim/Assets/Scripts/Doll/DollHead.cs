@@ -5,7 +5,6 @@ using UnityEngine;
 public class DollHead : MonoBehaviour
 {
     [SerializeField] private GameController _gameController;
-    [SerializeField] private EventService _eventService;
     [SerializeField] private GameObject _redColor;
     [SerializeField] private GameObject _greenColor;
     private bool _isActivateAttack = false;
@@ -29,7 +28,7 @@ public class DollHead : MonoBehaviour
     {
         _redColor.SetActive(true);
         _greenColor.SetActive(false);
-        _eventService.SetRandomValue();
+        EventService.Instance.SetRandomValue();
         _gameController.IsFreezeOn();
     }
 
@@ -42,7 +41,7 @@ public class DollHead : MonoBehaviour
 
     public void StopShooting()
     {
-        _eventService.ToMove();
+        EventService.Instance.ToMove();
     }
 
     private void Update()
